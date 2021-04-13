@@ -37,6 +37,15 @@ export default function todoListReducer(state = initialState, payload) {
         todoListData: [...state.todoListData, newTask],
       };
     }
+    case DELETE_TASK: {
+      debugger;
+      return {
+        ...state,
+        todoListData: state.todoListData.filter(
+          (todoItem) => todoItem.id != payload.id
+        ),
+      };
+    }
     default: {
       return state;
     }
@@ -47,4 +56,7 @@ export const addTaskActionCreator = (payload) => {
   return { type: ADD_TASK, todoListItem: payload };
 };
 
-export const deleteTaskActionCreator = (id) => {};
+export const deleteTaskActionCreator = (id) => {
+  debugger;
+  return { type: DELETE_TASK, id: id };
+};

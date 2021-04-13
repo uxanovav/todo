@@ -1,19 +1,21 @@
-import { useEffect } from "react";
 import { connect } from "react-redux";
-import { addTaskActionCreator } from "../redux/todolist-reducer";
+import {
+  addTaskActionCreator,
+  deleteTaskActionCreator,
+} from "../redux/todolist-reducer";
 import TodoList from "./TodoList";
 import TodoInput from "./TodoInput/TodoInput";
 
 const TodoListContainerC = (state) => {
-  const renderTodoList = (todoListData, addTask) => {
+  const renderTodoList = (todoListData, addTask, deleteTask) => {
     return (
       <div>
         <TodoInput addTask={addTask} />
-        <TodoList todoListData={todoListData} />
+        <TodoList todoListData={todoListData} deleteTask={deleteTask} />
       </div>
     );
   };
-  return renderTodoList(state.todoListData, state.addTask);
+  return renderTodoList(state.todoListData, state.addTask, state.deleteTask);
 };
 
 const MapStateToPops = (state) => {
@@ -26,6 +28,9 @@ const MapDispatchToProps = (dispath) => {
   return {
     addTask: (todoListData) => {
       return dispath(addTaskActionCreator(todoListData));
+    },
+    deleteTask: (id) => {
+      return dispath(deleteTaskActionCreator(id));
     },
   };
 };

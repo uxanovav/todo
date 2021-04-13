@@ -1,16 +1,18 @@
 import React from "react";
 import TodoListItem from "./TodoListItem/TodoListItem";
 
-const TodoList = ({ todoListData }) => {
+const TodoList = ({ todoListData, deleteTask }) => {
   const todoListArr = todoListData.map((todoData) => {
     return (
       <TodoListItem
         key={todoData.id}
+        id={todoData.id}
         itemLabel={todoData.itemLabel}
         itemBody={todoData.itemBody}
         isComplited={todoData.isComplited}
         isImportant={todoData.isImportant}
         category={todoData.category}
+        deleteTask={deleteTask}
       />
     );
   });
