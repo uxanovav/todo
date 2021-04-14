@@ -1,25 +1,28 @@
 import React from "react";
 import TodoCategory from "./TodoCategory";
-import CategorySetting from "./CategorySetting/CategorySetting";
 import { connect } from "react-redux";
 import styles from "./TodoCategory.module.css";
 import {
   addCategoryActionCreator,
   deleteCategoryActionCreator,
+  updateCategoryActionCreator,
 } from "../../redux/category-reducer";
 
 const TodoCategoryC = (state) => {
-  const renderCategory = (categoryData, addCategory, deleteCategory) => {
+  const renderCategory = (
+    categoryData,
+    addCategory,
+    deleteCategory,
+    updateCategory
+  ) => {
     return (
       <div className={styles.panel}>
         <div className={styles.logo}>LOGO</div>
         <TodoCategory
-          categoryData={categoryData}
-          deleteCategory={deleteCategory}
-        />
-        <CategorySetting
           addCategory={addCategory}
           categoryData={categoryData}
+          deleteCategory={deleteCategory}
+          updateCategory={updateCategory}
         />
       </div>
     );
@@ -27,7 +30,8 @@ const TodoCategoryC = (state) => {
   return renderCategory(
     state.categoryData,
     state.addCategory,
-    state.deleteCategory
+    state.deleteCategory,
+    state.updateCategory
   );
 };
 
@@ -44,6 +48,9 @@ const MapDispatchToProps = (dispatch) => {
     },
     deleteCategory: (id) => {
       return dispatch(deleteCategoryActionCreator(id));
+    },
+    updateCategory: (id, label) => {
+      return dispatch(updateCategoryActionCreator(id, label));
     },
   };
 };

@@ -33,6 +33,17 @@ export default function categoryReducer(state = initialState, payload) {
         ),
       };
     }
+    case UPDATE_CATEGORY: {
+      return {
+        ...state,
+        categoryData: state.categoryData.map((category) => {
+          if (category.id === payload.id) {
+            category.label = payload.label;
+          }
+          return category;
+        }),
+      };
+    }
     default: {
       return state;
     }
@@ -45,4 +56,7 @@ export const addCategoryActionCreator = (newCategory) => {
 
 export const deleteCategoryActionCreator = (id) => {
   return { type: DELETE_CATEGORY, id: id };
+};
+export const updateCategoryActionCreator = (id, label) => {
+  return { type: UPDATE_CATEGORY, id: id, label: label };
 };
