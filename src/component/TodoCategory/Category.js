@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import styles from "./TodoCategory.module.css";
 
-const Category = ({ id, label, deleteCategory, updateCategory }) => {
+const Category = ({
+  id,
+  label,
+  deleteCategory,
+  updateCategory,
+  renameCategory,
+}) => {
   const [isUpdate, setIsUpdate] = useState(false);
   const [newLabel, setNewLabel] = useState(label);
   const onDelete = () => {
     return deleteCategory(id);
   };
   const onUpdate = () => {
-    setIsUpdate(!isUpdate);
-    return updateCategory(id, newLabel);
+    updateCategory(id, newLabel);
+    renameCategory(newLabel, label);
+    return setIsUpdate(!isUpdate);
   };
   return (
     <div key={id} className={styles.category}>

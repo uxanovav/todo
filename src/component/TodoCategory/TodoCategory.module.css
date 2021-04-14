@@ -12,4 +12,5 @@
   width: 200px;
   border: 1px white solid;
   background-color: violet;
+  cursor: pointer;
 }

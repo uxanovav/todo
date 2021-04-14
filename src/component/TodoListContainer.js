@@ -20,8 +20,12 @@ const TodoListContainerC = (state) => {
     markImportant,
     markComplited,
     updateTask,
-    editTask
+    editTask,
+    filter
   ) => {
+    let filtredTodoListData = todoListData.filter(
+      (todoListItem) => todoListItem.category === filter || filter === "all"
+    );
     return (
       <>
         <div className={style.body}>
@@ -29,7 +33,7 @@ const TodoListContainerC = (state) => {
           <div>
             <TodoList
               categoryData={categoryData}
-              todoListData={todoListData}
+              todoListData={filtredTodoListData}
               deleteTask={deleteTask}
               markImportant={markImportant}
               markComplited={markComplited}
@@ -49,7 +53,8 @@ const TodoListContainerC = (state) => {
     state.markImportant,
     state.markComplited,
     state.updateTask,
-    state.editTask
+    state.editTask,
+    state.filter
   );
 };
 
@@ -57,6 +62,7 @@ const MapStateToPops = (state) => {
   return {
     todoListData: state.todoListReducer.todoListData,
     categoryData: state.categoryReducer.categoryData,
+    filter: state.categoryReducer.filter,
   };
 };
 

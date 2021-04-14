@@ -4,6 +4,7 @@ const DELETE_TASK = "DELETE-TASK";
 const MARK_COMPLITED = "MARK-COMPLITED";
 const MARK_IMPORTANT = "MARK-IMPORTANT";
 const EDIT_TASK = "EDIT-TASK";
+const CATEGORY_RENAME = "CATEGORY_RENAME";
 
 let initialState = {
   todoListData: [
@@ -20,7 +21,6 @@ let initialState = {
       currentText: "",
     },
   ],
-  filter: "",
 };
 
 export default function todoListReducer(state = initialState, payload) {
@@ -97,8 +97,17 @@ export default function todoListReducer(state = initialState, payload) {
             todoItem.itemBody = payload.newText;
             todoItem.category = payload.newCategory;
           }
-          debugger;
-
+          return todoItem;
+        }),
+      };
+    }
+    case CATEGORY_RENAME: {
+      return {
+        ...state,
+        todoListData: state.todoListData.map((todoItem) => {
+          if (todoItem.category === payload.oldCategory) {
+            todoItem.category = payload.newCategory;
+          }
           return todoItem;
         }),
       };
@@ -137,4 +146,12 @@ export const updateTaskAcionCreator = (id, newLabel, newText, newCategory) => {
 
 export const editTaskAcitonCreator = (id) => {
   return { type: EDIT_TASK, id: id };
+};
+
+export const categoryRenameActionCreator = (newCategory, oldCategory) => {
+  return {
+    type: CATEGORY_RENAME,
+    newCategory: newCategory,
+    oldCategory: oldCategory,
+  };
 };

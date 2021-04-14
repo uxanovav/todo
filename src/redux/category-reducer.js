@@ -1,6 +1,7 @@
 const ADD_CATEGORY = "ADD-CATEGORY";
 const DELETE_CATEGORY = "DELETE-CATEGORY";
 const UPDATE_CATEGORY = "UPDATE-CATEGORY";
+const SET_FILTER = "SET-FILTER";
 
 let initialState = {
   categoryData: [
@@ -8,6 +9,7 @@ let initialState = {
     { id: 1, label: "other" },
     { id: 2, label: "buy" },
   ],
+  filter: "all",
 };
 
 export default function categoryReducer(state = initialState, payload) {
@@ -44,6 +46,12 @@ export default function categoryReducer(state = initialState, payload) {
         }),
       };
     }
+    case SET_FILTER: {
+      return {
+        ...state,
+        filter: payload.filter,
+      };
+    }
     default: {
       return state;
     }
@@ -59,4 +67,7 @@ export const deleteCategoryActionCreator = (id) => {
 };
 export const updateCategoryActionCreator = (id, label) => {
   return { type: UPDATE_CATEGORY, id: id, label: label };
+};
+export const setFilterActionCreator = (filter) => {
+  return { type: SET_FILTER, filter: filter };
 };
