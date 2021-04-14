@@ -1,7 +1,6 @@
 .body {
   position: relative;
 
-  margin: 0 auto;
   width: 1024px;
   border: red 1px solid;
 }

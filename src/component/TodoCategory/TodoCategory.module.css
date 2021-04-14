@@ -1,0 +1,16 @@
+.panel {
+  border: 1px green solid;
+}
+
+.logo {
+  width: 200px;
+  height: 150px;
+  background-color: steelblue;
+}
+
+.category {
+  width: 200px;
+  height: 30px;
+  border: 1px white solid;
+  background-color: violet;
+}

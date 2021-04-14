@@ -16,7 +16,11 @@ const TodoInput = (props) => {
       <textarea ref={newTodoText} />
       <select ref={newTodoCategory}>
         {props.categoryData.map((category) => {
-          return <option value={category.label}>{category.label}</option>;
+          return (
+            <option key={category.id} value={category.label}>
+              {category.label}
+            </option>
+          );
         })}
       </select>
       <button onClick={onAdd}>addTask</button>

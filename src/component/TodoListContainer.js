@@ -56,7 +56,7 @@ const TodoListContainerC = (state) => {
 const MapStateToPops = (state) => {
   return {
     todoListData: state.todoListReducer.todoListData,
-    categoryData: state.todoListReducer.categoryData,
+    categoryData: state.categoryReducer.categoryData,
   };
 };
 

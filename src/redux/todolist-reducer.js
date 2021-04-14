@@ -20,7 +20,7 @@ let initialState = {
       currentText: "",
     },
   ],
-  categoryData: [{ label: "work" }, { label: "other" }, { label: "buy" }],
+  filter: "",
 };
 
 export default function todoListReducer(state = initialState, payload) {
