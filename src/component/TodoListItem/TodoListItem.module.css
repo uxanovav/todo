@@ -1,0 +1,18 @@
+.important {
+  font-weight: bolder;
+}
+
+.complited {
+  text-decoration: line-through;
+}
+
+.normal {
+}
+
+.item_body {
+  background-color: rgb(250, 217, 187);
+  max-width: 200px;
+  min-width: 200px;
+  margin: 15px;
+  padding: 5px;
+}

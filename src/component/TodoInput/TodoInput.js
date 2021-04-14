@@ -1,14 +1,24 @@
 import React from "react";
 
 const TodoInput = (props) => {
-  let newTask = React.createRef();
+  let newTodoText = React.createRef();
+  let newTodoLabel = React.createRef();
+  let newTodoCategory = React.createRef();
   const onAdd = () => {
-    let newTodo = newTask.current.value;
-    props.addTask(newTodo);
+    let newLabel = newTodoLabel.current.value;
+    let newText = newTodoText.current.value;
+    let newCategory = newTodoCategory.current.value;
+    props.addTask({ newLabel, newText, newCategory });
   };
   return (
     <div>
-      <textarea ref={newTask} />
+      <input ref={newTodoLabel} />
+      <textarea ref={newTodoText} />
+      <select ref={newTodoCategory}>
+        {props.categoryData.map((category) => {
+          return <option value={category.label}>{category.label}</option>;
+        })}
+      </select>
       <button onClick={onAdd}>addTask</button>
     </div>
   );
