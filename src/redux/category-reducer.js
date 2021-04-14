@@ -2,6 +2,7 @@ const ADD_CATEGORY = "ADD-CATEGORY";
 const DELETE_CATEGORY = "DELETE-CATEGORY";
 const UPDATE_CATEGORY = "UPDATE-CATEGORY";
 const SET_FILTER = "SET-FILTER";
+const SET_SEARCH_FILTER = "SET-SEARCH-FILTER";
 
 let initialState = {
   categoryData: [
@@ -10,6 +11,7 @@ let initialState = {
     { id: 2, label: "buy" },
   ],
   filter: "all",
+  searchFilter: "",
 };
 
 export default function categoryReducer(state = initialState, payload) {
@@ -52,6 +54,12 @@ export default function categoryReducer(state = initialState, payload) {
         filter: payload.filter,
       };
     }
+    case SET_SEARCH_FILTER: {
+      return {
+        ...state,
+        searchFilter: payload.searchFilter,
+      };
+    }
     default: {
       return state;
     }
@@ -70,4 +78,7 @@ export const updateCategoryActionCreator = (id, label) => {
 };
 export const setFilterActionCreator = (filter) => {
   return { type: SET_FILTER, filter: filter };
+};
+export const setSearchFilterActionCreator = (searchFilter) => {
+  return { type: SET_SEARCH_FILTER, searchFilter: searchFilter };
 };

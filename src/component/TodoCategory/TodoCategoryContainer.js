@@ -6,6 +6,7 @@ import {
   addCategoryActionCreator,
   deleteCategoryActionCreator,
   setFilterActionCreator,
+  setSearchFilterActionCreator,
   updateCategoryActionCreator,
 } from "../../redux/category-reducer";
 import { categoryRenameActionCreator } from "../../redux/todolist-reducer";
@@ -17,7 +18,8 @@ const TodoCategoryC = (state) => {
     deleteCategory,
     updateCategory,
     setFilter,
-    renameCategory
+    renameCategory,
+    setSearchFilter
   ) => {
     return (
       <div className={styles.panel}>
@@ -29,6 +31,7 @@ const TodoCategoryC = (state) => {
           updateCategory={updateCategory}
           setFilter={setFilter}
           renameCategory={renameCategory}
+          setSearchFilter={setSearchFilter}
         />
       </div>
     );
@@ -39,7 +42,8 @@ const TodoCategoryC = (state) => {
     state.deleteCategory,
     state.updateCategory,
     state.setFilter,
-    state.renameCategory
+    state.renameCategory,
+    state.setSearchFilter
   );
 };
 
@@ -65,6 +69,9 @@ const MapDispatchToProps = (dispatch) => {
     },
     renameCategory: (newCategory, oldCategory) => {
       return dispatch(categoryRenameActionCreator(newCategory, oldCategory));
+    },
+    setSearchFilter: (newSearchFilter) => {
+      return dispatch(setSearchFilterActionCreator(newSearchFilter));
     },
   };
 };

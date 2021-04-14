@@ -21,10 +21,14 @@ const TodoListContainerC = (state) => {
     markComplited,
     updateTask,
     editTask,
-    filter
+    filter,
+    searchFilter
   ) => {
     let filtredTodoListData = todoListData.filter(
-      (todoListItem) => todoListItem.category === filter || filter === "all"
+      (todoListItem) =>
+        (todoListItem.category === filter || filter === "all") &&
+        (todoListItem.itemLabel.includes(searchFilter) ||
+          todoListItem.itemBody.includes(searchFilter))
     );
     return (
       <>
@@ -54,7 +58,8 @@ const TodoListContainerC = (state) => {
     state.markComplited,
     state.updateTask,
     state.editTask,
-    state.filter
+    state.filter,
+    state.searchFilter
   );
 };
 
@@ -63,6 +68,7 @@ const MapStateToPops = (state) => {
     todoListData: state.todoListReducer.todoListData,
     categoryData: state.categoryReducer.categoryData,
     filter: state.categoryReducer.filter,
+    searchFilter: state.categoryReducer.searchFilter,
   };
 };
 

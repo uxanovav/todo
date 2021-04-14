@@ -9,14 +9,24 @@ const TodoCategory = ({
   updateCategory,
   setFilter,
   renameCategory,
+  setSearchFilter,
 }) => {
   const [isAdd, setIsAdd] = useState(false);
   const [newCategory, setNewCategory] = useState("");
+  const [newSearchFilter, setNewSearchFilter] = useState("");
 
   const onFilterSet = (filter) => {
+    if (filter === "all") {
+      setSearchFilter("");
+    }
     return setFilter(filter);
   };
 
+  const onSearchFilterChange = () => {
+    setFilter("all");
+    setSearchFilter(newSearchFilter);
+    return setNewSearchFilter("");
+  };
   const onAddNewCategory = () => {
     addCategory(newCategory);
     return setNewCategory("");
@@ -65,7 +75,11 @@ const TodoCategory = ({
 
         <hr />
         <p>SEARCH:</p>
-        <input></input>
+        <input
+          value={newSearchFilter}
+          onChange={(e) => setNewSearchFilter(e.target.value)}
+        ></input>
+        <button onClick={onSearchFilterChange}>SEARCH</button>
       </div>
     </>
   );
