@@ -27,8 +27,8 @@ const TodoListContainerC = (state) => {
     let filtredTodoListData = todoListData.filter(
       (todoListItem) =>
         (todoListItem.category === filter || filter === "all") &&
-        (todoListItem.itemLabel.includes(searchFilter) ||
-          todoListItem.itemBody.includes(searchFilter))
+        (todoListItem.itemLabel.toLowerCase().includes(searchFilter) ||
+          todoListItem.itemBody.toLowerCase().includes(searchFilter))
     );
     return (
       <>

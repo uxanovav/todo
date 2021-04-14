@@ -24,7 +24,7 @@ const TodoCategory = ({
 
   const onSearchFilterChange = () => {
     setFilter("all");
-    setSearchFilter(newSearchFilter);
+    setSearchFilter(newSearchFilter.toLowerCase());
     return setNewSearchFilter("");
   };
   const onAddNewCategory = () => {
