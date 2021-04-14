@@ -23,7 +23,12 @@ const TodoCategoryC = (state) => {
   ) => {
     return (
       <div className={styles.panel}>
-        <div className={styles.logo}>LOGO</div>
+        <div className={styles.logo}>
+          <img
+            src="https://img.pngio.com/js-logo-react-react-js-icon-react-png-512_512.png"
+            alt="logo"
+          />
+        </div>
         <TodoCategory
           addCategory={addCategory}
           categoryData={categoryData}

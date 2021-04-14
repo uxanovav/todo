@@ -10,9 +10,29 @@
 }
 
 .item_body {
-  background-color: rgb(250, 217, 187);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 225, 198, 1) 0%,
+    rgba(255, 212, 125, 1) 56%,
+    rgba(235, 182, 102, 1) 100%
+  );
+  -webkit-box-shadow: 10px 10px 5px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px -8px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px -8px rgba(0, 0, 0, 0.2);
+  border: rgb(126, 83, 4) 1px solid;
+  border-radius: 10px;
   max-width: 200px;
   min-width: 200px;
   margin: 15px;
-  padding: 5px;
+  padding: 10px;
+}
+
+.item_body img {
+  width: 25px;
+  cursor: pointer;
+}
+
+.buttongroup {
+  display: flex;
+  justify-content: flex-end;
 }

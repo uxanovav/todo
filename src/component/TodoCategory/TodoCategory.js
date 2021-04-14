@@ -28,13 +28,22 @@ const TodoCategory = ({
     return setNewSearchFilter("");
   };
   const onAddNewCategory = () => {
-    addCategory(newCategory);
-    return setNewCategory("");
+    if (newCategory !== "") {
+      addCategory(newCategory);
+      return setNewCategory("");
+    }
   };
   return (
     <>
+      <br />
+      <input
+        value={newSearchFilter}
+        onChange={(e) => setNewSearchFilter(e.target.value)}
+      ></input>
+      <button onClick={onSearchFilterChange}>SEARCH</button>
+      <hr />
       <div className={styles.category} onClick={() => onFilterSet("all")}>
-        ALL
+        All
       </div>
       {categoryData.map((categoryItem) => {
         return (
@@ -46,8 +55,12 @@ const TodoCategory = ({
           </div>
         );
       })}
+      <hr />
       <div>
-        <div onClick={(e) => setIsAdd(!isAdd)}>Settings</div>
+        <div className={styles.setting} onClick={(e) => setIsAdd(!isAdd)}>
+          Settings
+        </div>
+        <hr />
         {isAdd ? (
           <div>
             <input
@@ -72,14 +85,6 @@ const TodoCategory = ({
             })}
           </div>
         ) : null}
-
-        <hr />
-        <p>SEARCH:</p>
-        <input
-          value={newSearchFilter}
-          onChange={(e) => setNewSearchFilter(e.target.value)}
-        ></input>
-        <button onClick={onSearchFilterChange}>SEARCH</button>
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 .wrapper {
-  margin: 0 auto;
-  border: 3px blue solid;
+  height: 100%;
+  margin: 40px auto;
   display: flex;
   justify-content: center;
 }

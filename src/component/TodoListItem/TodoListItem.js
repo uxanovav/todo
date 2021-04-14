@@ -52,7 +52,19 @@ const TodoListItem = ({
       <div className={style.item_body}>
         {isEdit ? (
           <>
-            <button onClick={onEdit}>E</button>
+            <div className={style.buttongroup}>
+              <img
+                src="https://img.icons8.com/ios/452/delete--v3.png"
+                alt="delete"
+                onClick={onDelete}
+              />
+              <img
+                src="https://mywebicons.ru/i/png/521d148e273086f246c6f7a313485392.png"
+                alt="edit"
+                onClick={onEdit}
+              />
+            </div>
+            <hr />
             <input
               value={newLabel}
               ref={labelTextArea}
@@ -80,11 +92,26 @@ const TodoListItem = ({
             <button onClick={onUpdate}>SAVE</button>
           </>
         ) : (
-          <>
-            <button onClick={onDelete}>x</button>
-            <button onClick={onAddImportant}>!</button>
-            <button onClick={onAddComplited}>C</button>
-            <button onClick={onEdit}>E</button>
+          <div>
+            <div className={style.buttongroup}>
+              {" "}
+              <img
+                src="https://api.icons8.com/download/7d0affd31152bba3d8450158edff2a01c56ee88f/windows8/PNG/512/Very_Basic/attention-512.png"
+                alt="important"
+                onClick={onAddImportant}
+              />
+              <img
+                src="https://img.icons8.com/ios/452/task-completed.png"
+                alt="complete"
+                onClick={onAddComplited}
+              />
+              <img
+                src="https://mywebicons.ru/i/png/521d148e273086f246c6f7a313485392.png"
+                alt="edit"
+                onClick={onEdit}
+              />
+            </div>
+            <hr />
             <div
               className={
                 (isComplited ? style.complited : style.normal) +
@@ -92,11 +119,11 @@ const TodoListItem = ({
                 (isImportant ? style.important : style.normal)
               }
             >
-              <h3>{itemLabel}</h3>
+              <h2>{itemLabel}</h2>
               <p>{itemBody}</p>
               <span>{category}</span>
             </div>
-          </>
+          </div>
         )}
       </div>
     </>

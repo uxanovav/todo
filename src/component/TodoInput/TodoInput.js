@@ -1,6 +1,7 @@
 import React from "react";
+import styles from "./TodoInput.module.css";
 
-const TodoInput = (props) => {
+const TodoInput = ({ categoryData, addTask }) => {
   let newTodoText = React.createRef();
   let newTodoLabel = React.createRef();
   let newTodoCategory = React.createRef();
@@ -8,14 +9,26 @@ const TodoInput = (props) => {
     let newLabel = newTodoLabel.current.value;
     let newText = newTodoText.current.value;
     let newCategory = newTodoCategory.current.value;
-    props.addTask({ newLabel, newText, newCategory });
+    if (newLabel !== "") {
+      addTask({ newLabel, newText, newCategory });
+      newTodoLabel.current.value = "";
+      newTodoText.current.value = "";
+    }
   };
   return (
-    <div>
-      <input ref={newTodoLabel} />
+    <div className={styles.inputpanel}>
+      <h2>ADD NEW NOTE</h2>
+      <div>
+        <label>
+          Label:<span>*</span>
+        </label>
+        <input ref={newTodoLabel} />
+      </div>
+      <label>Text:</label>
       <textarea ref={newTodoText} />
+      <label>Category:</label>
       <select ref={newTodoCategory}>
-        {props.categoryData.map((category) => {
+        {categoryData.map((category) => {
           return (
             <option key={category.id} value={category.label}>
               {category.label}
@@ -23,7 +36,7 @@ const TodoInput = (props) => {
           );
         })}
       </select>
-      <button onClick={onAdd}>addTask</button>
+      <button onClick={onAdd}>ADD</button>
     </div>
   );
 };
