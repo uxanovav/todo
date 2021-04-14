@@ -28,6 +28,7 @@ const TodoListContainerC = (state) => {
           <TodoInput addTask={addTask} categoryData={categoryData} />
           <div>
             <TodoList
+              categoryData={categoryData}
               todoListData={todoListData}
               deleteTask={deleteTask}
               markImportant={markImportant}

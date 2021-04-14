@@ -9,10 +9,12 @@ const TodoList = ({
   markComplited,
   updateTask,
   editTask,
+  categoryData,
 }) => {
   const todoListArr = todoListData.map((todoData) => {
     return (
       <TodoListItem
+        categoryData={categoryData}
         isEdit={todoData.isEdit}
         key={todoData.id}
         id={todoData.id}
