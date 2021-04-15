@@ -36,7 +36,11 @@ const TodoInput = ({ categoryData, addTask }) => {
           );
         })}
       </select>
-      <button onClick={onAdd}>ADD</button>
+      <img
+        src="https://img.icons8.com/ios/452/add--v2.png"
+        alt="add"
+        onClick={onAdd}
+      />
     </div>
   );
 };

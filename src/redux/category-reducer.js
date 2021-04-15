@@ -6,9 +6,9 @@ const SET_SEARCH_FILTER = "SET-SEARCH-FILTER";
 
 let initialState = {
   categoryData: [
-    { id: 0, label: "work" },
-    { id: 1, label: "other" },
-    { id: 2, label: "buy" },
+    { id: 0, label: "Work" },
+    { id: 1, label: "Shop" },
+    { id: 2, label: "Other" },
   ],
   filter: "all",
   searchFilter: "",

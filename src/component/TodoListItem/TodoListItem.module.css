@@ -23,6 +23,8 @@
   border-radius: 10px;
   max-width: 200px;
   min-width: 200px;
+  min-height: 250px;
+  max-height: 250px;
   margin: 15px;
   padding: 10px;
 }

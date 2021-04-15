@@ -28,7 +28,7 @@ const TodoCategory = ({
     return setNewSearchFilter("");
   };
   const onAddNewCategory = () => {
-    if (newCategory !== "") {
+    if (newCategory !== "" && newCategory !== "all") {
       addCategory(newCategory);
       return setNewCategory("");
     }
@@ -63,13 +63,19 @@ const TodoCategory = ({
         <hr />
         {isAdd ? (
           <div>
-            <input
-              value={newCategory}
-              onChange={(e) => setNewCategory(e.target.value)}
-              placeholder="New category name"
-            ></input>
-            <br />
-            <button onClick={onAddNewCategory}>ADD</button>
+            <div className={styles.addcategory}>
+              <input
+                value={newCategory}
+                onChange={(e) => setNewCategory(e.target.value)}
+                placeholder="New category name"
+              ></input>
+              <br />
+              <img
+                src="https://img.icons8.com/ios/452/add--v2.png"
+                alt="add"
+                onClick={onAddNewCategory}
+              />
+            </div>
             <hr />
             {categoryData.map((categoryItem) => {
               return (
