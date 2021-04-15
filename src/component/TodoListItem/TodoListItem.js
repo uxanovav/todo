@@ -75,21 +75,27 @@ const TodoListItem = ({
               ref={bodyTextArea}
               onChange={(e) => onTextUpdate(e.target.value)}
             />
-            <select
-              ref={categorySelectArea}
-              onChange={(e) => onCategoryUpdate(e.target.value)}
-            >
-              {categoryData.map((categoryEl) => {
-                return categoryEl.label === category ? (
-                  <option value={categoryEl.label} selected>
-                    {categoryEl.label}
-                  </option>
-                ) : (
-                  <option value={categoryEl.label}>{categoryEl.label}</option>
-                );
-              })}
-            </select>
-            <button onClick={onUpdate}>SAVE</button>
+            <div className={style.saveblock}>
+              <select
+                ref={categorySelectArea}
+                onChange={(e) => onCategoryUpdate(e.target.value)}
+              >
+                {categoryData.map((categoryEl) => {
+                  return categoryEl.label === category ? (
+                    <option value={categoryEl.label} selected>
+                      {categoryEl.label}
+                    </option>
+                  ) : (
+                    <option value={categoryEl.label}>{categoryEl.label}</option>
+                  );
+                })}
+              </select>
+              <img
+                src="https://img.icons8.com/ios/452/save-as.png"
+                alt="edit"
+                onClick={onUpdate}
+              />
+            </div>
           </>
         ) : (
           <div>

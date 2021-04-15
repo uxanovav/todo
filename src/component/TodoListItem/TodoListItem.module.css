@@ -38,3 +38,30 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.item_body textarea {
+  margin-left: 8px;
+  margin-top: 10px;
+  width: 90%;
+  height: 130px;
+  resize: none;
+  border-radius: 5px;
+}
+
+.item_body input {
+  margin-left: 8px;
+  width: 90%;
+  border-radius: 5px;
+}
+
+.item_body select {
+  margin-left: 8px;
+  width: 75%;
+  border-radius: 5px;
+}
+
+.saveblock {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
